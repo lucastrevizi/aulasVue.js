@@ -2,9 +2,12 @@
   <div id="app">
     <ImageComponent/>
     <HelloWorld/>
-    <h3> Digite Seu texto: 
+    <p v-if="visibleif"> Teste do V-if</p>
+    <p v-show="visibleshow"> Teste do V-show </p>
+    <h3> Digite Seu texto:
     <input type="text" placeholder="Nome aqui" v-model="msg">
     <button v-on:click="mostre"> Ok </button>
+    <button v-on:click="texto_oculto">Mostre o Texto </button>
     </h3>
   </div>
 </template>
@@ -18,7 +21,9 @@ export default {
   name: 'App',
   data () {
     return {
-      msg,
+      msg: '',
+      visibleif: false,
+      visibleshow: false,
     }
   },
   components: {
@@ -29,6 +34,10 @@ export default {
   methods: {
     mostre: function(){
       alert(`Você escreveu: ${this.msg}`);
+    },
+    texto_oculto: function(){
+      this.visibleif = true;
+      this.visibleshow = true;
     },
   }
 }
